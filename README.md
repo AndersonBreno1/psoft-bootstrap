@@ -1,5 +1,5 @@
 
-# Repositório base da atividade inicial da disciplina de psoft
+# Repositório base da atividade inicial da disciplina
 
 ## Atividade inicial 
 
