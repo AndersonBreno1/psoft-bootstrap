@@ -67,59 +67,78 @@ public class Controller {
     }
 
     public void atualizaIdadePessoa(int idade, String cpf) {
-        Pessoa pessoa = getPessoa(cpf);
-        pessoa.setIdade(idade);
+        if (temPessoa(cpf)) {
+            Pessoa pessoa = getPessoa(cpf);
+            pessoa.setIdade(idade);
+        }
     }
 
     public void atualizaTelefonePessoa(String telefone, String cpf) {
-        Pessoa pessoa = getPessoa(cpf);
-        pessoa.setTelefone(telefone);
+        if (temPessoa(cpf)) {
+            Pessoa pessoa = getPessoa(cpf);
+            pessoa.setTelefone(telefone);
+        }
     }
 
     public void atualizaProfissaoPessoa(String profissao, String cpf) {
-        Pessoa pessoa = getPessoa(cpf);
-        pessoa.setProfissao(profissao);
+        if (temPessoa(cpf)) {
+            Pessoa pessoa = getPessoa(cpf);
+            pessoa.setProfissao(profissao);
+        }
+    }
+
+    public void atualizaPapelPessoa(String papel, String cpf) {
+        if (temPessoa(cpf)) {
+            Pessoa pessoa = getPessoa(cpf);
+            pessoa.adicionaPapel(papel);
+        }
     }
 
     public String recuperaNomePessoa(String cpf) {
-        Pessoa pessoa = getPessoa(cpf);
-        if (pessoa != null)
+        if (temPessoa(cpf)) {
+            Pessoa pessoa = getPessoa(cpf);
             return pessoa.getNome();
+        }
         return null;
     }
 
     public int recuperaIdadePessoa(String cpf) {
-        Pessoa pessoa = getPessoa(cpf);
-        if (pessoa != null)
+        if (temPessoa(cpf)) {
+            Pessoa pessoa = getPessoa(cpf);
             return pessoa.getIdade();
+        }
         return -1;
     }
 
     public String recuperaCpfPessoa(String cpf) {
-        Pessoa pessoa = getPessoa(cpf);
-        if (pessoa != null)
+        if (temPessoa(cpf)) {
+            Pessoa pessoa = getPessoa(cpf);
             return pessoa.getCpf();
+        }
         return null;
     }
 
     public String recuperaTelefonePessoa(String cpf) {
-        Pessoa pessoa = getPessoa(cpf);
-        if (pessoa != null)
+        if (temPessoa(cpf)) {
+            Pessoa pessoa = getPessoa(cpf);
             return pessoa.getTelefone();
+        }
         return null;
     }
 
     public String recuperaProfissaoPessoa(String cpf) {
-        Pessoa pessoa = getPessoa(cpf);
-        if (pessoa != null)
+        if (temPessoa(cpf)) {
+            Pessoa pessoa = getPessoa(cpf);
             return pessoa.getProfissao();
+        }
         return null;
     }
 
     public Papel recuperaPapelPessoa(String cpf) {
-        Pessoa pessoa = getPessoa(cpf);
-        if (pessoa != null)
+        if (temPessoa(cpf)) {
+            Pessoa pessoa = getPessoa(cpf);
             return pessoa.getPapel();
+        }
         return null;
     }
 
