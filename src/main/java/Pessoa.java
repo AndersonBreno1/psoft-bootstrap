@@ -1,3 +1,4 @@
+import java.rmi.NoSuchObjectException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ public class Pessoa {
     private Papel papel;
 
     public Pessoa(String nome, int idade, String cpf, String telefone, String endereco, String profissao,
-            String papel) {
+            String papel) throws NoSuchObjectException {
         this.nome = nome;
         this.idade = idade;
         this.cpf = cpf;
@@ -22,8 +23,10 @@ public class Pessoa {
         adicionaPapel(papel);
     }
 
-    public void adicionaPapel(String papel) {
-        if (papel != null && papel.toLowerCase().equals("cliente")) {
+    public void adicionaPapel(String papel) throws NoSuchObjectException {
+        if (papel == null || papel.toLowerCase().equals("cliente") || papel.toLowerCase().equals("funcionario")) {
+            throw new NoSuchObjectException("Papel desconhecido " + papel);
+        } else if (papel.toLowerCase().equals("cliente")) {
             this.papel = Papel.CLIENTE;
         } else {
             this.papel = Papel.FUNCIONARIO;

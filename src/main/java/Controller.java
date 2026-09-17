@@ -1,3 +1,4 @@
+import java.rmi.NoSuchObjectException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +10,7 @@ public class Controller {
     }
 
     public boolean cadastraPessoa(String nome, int idade, String cpf, String telefone, String endereco,
-            String profissao, String papel) {
+            String profissao, String papel) throws NoSuchObjectException {
         if (temPessoa(cpf))
             return false;
 
@@ -95,7 +96,7 @@ public class Controller {
         }
     }
 
-    public void atualizaPapelPessoa(String papel, String cpf) {
+    public void atualizaPapelPessoa(String papel, String cpf) throws NoSuchObjectException {
         if (temPessoa(cpf)) {
             Pessoa pessoa = getPessoa(cpf);
             pessoa.adicionaPapel(papel);
