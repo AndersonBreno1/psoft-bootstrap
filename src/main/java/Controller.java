@@ -56,6 +56,14 @@ public class Controller {
         return out;
     }
 
+    public boolean removerPessoa(String cpf) {
+        if (temPessoa(cpf)) {
+            this.pessoas.remove(cpf);
+            return true;
+        }
+        return false;
+    }
+
     public String recuperarPessoa(String cpf) {
         if (temPessoa(cpf))
             return this.pessoas.get(cpf).toString();
