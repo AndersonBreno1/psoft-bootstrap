@@ -1,4 +1,3 @@
-import java.rmi.NoSuchObjectException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +11,7 @@ public class Pessoa {
     private Papel papel;
 
     public Pessoa(String nome, int idade, String cpf, String telefone, String endereco, String profissao,
-            String papel) throws NoSuchObjectException {
+            String papel) {
         this.nome = nome;
         this.idade = idade;
         this.cpf = cpf;
@@ -23,13 +22,19 @@ public class Pessoa {
         adicionaPapel(papel);
     }
 
-    public void adicionaPapel(String papel) throws NoSuchObjectException {
-        if (papel == null || papel.toLowerCase().equals("cliente") || papel.toLowerCase().equals("funcionario")) {
-            throw new NoSuchObjectException("Papel desconhecido " + papel);
-        } else if (papel.toLowerCase().equals("cliente")) {
-            this.papel = Papel.CLIENTE;
-        } else {
-            this.papel = Papel.FUNCIONARIO;
+    public void adicionaPapel(String papel) throws RuntimeException {
+        if (papel == null)
+            throw new RuntimeException("Papel invalido " + papel);
+
+        switch (papel.toLowerCase()) {
+            case "cliente":
+                this.papel = Papel.CLIENTE;
+                break;
+            case "funcionario":
+                this.papel = Papel.FUNCIONARIO;
+                break;
+            default:
+                throw new RuntimeException("Papel invalido " + papel);
         }
     }
 
